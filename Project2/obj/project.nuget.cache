@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "OicYr/kmCBY=",
+  "success": true,
+  "projectFilePath": "D:\\F#\\Projects\\Project2\\Project2.fsproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\PC\\.nuget\\packages\\fsharp.core\\8.0.403\\fsharp.core.8.0.403.nupkg.sha512"
+  ],
+  "logs": []
+}

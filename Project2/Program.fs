@@ -31,6 +31,16 @@ let leaves tree =
             leftList @ rightList     // иначе объединяем списки потомков
     ) [] tree
 
+/// Вставка значения в бинарное дерево поиска
+let rec insert value tree =
+    match tree with
+    | Empty -> Node(value, Empty, Empty)
+    | Node(root, left, right) ->
+        if value < root then
+            Node(root, insert value left, right)
+        else
+            Node(root, left, insert value right)
+
 /// Ввод целого положительного числа (глубины) с проверкой
 let rec readInt prompt =
     printf "%s" prompt
@@ -41,16 +51,15 @@ let rec readInt prompt =
         printfn "Ошибка: введите положительное целое число."
         readInt prompt
 
-/// Генерация случайного дерева заданной глубины (полное бинарное дерево)
+/// Генерация случайного дерева заданной глубины
 let rnd = Random()
-let rec generateRandomTree depth =
-    if depth <= 0 then
-        Empty
-    else
-        let value = rnd.NextDouble() * 100.0
-        Node(value,
-             generateRandomTree (depth - 1),
-             generateRandomTree (depth - 1))
+let generateRandomTree count =
+    let rec loop n tree =
+        if n <= 0 then tree
+        else
+            let value = rnd.NextDouble() * 100.0
+            loop (n - 1) (insert value tree)
+    loop count Empty
 
 /// Вывод дерева с указанием глубины и направления.
 let rec printTreeDepth tree depth side =
@@ -64,9 +73,9 @@ let rec printTreeDepth tree depth side =
 
 [<EntryPoint>]
 let main _ =
-    let depth = readInt "Введите глубину дерева (положительное целое число): "
+    let count = readInt "Введите количество узлов в дереве: "
 
-    let tree = generateRandomTree depth
+    let tree = generateRandomTree count
 
     printfn "\nИсходное дерево:"
     printTreeDepth tree 0 "Root"

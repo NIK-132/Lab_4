@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "PC1LHrVHhTA=",
+  "dgSpecHash": "tk1S6kptaDE=",
   "success": true,
-  "projectFilePath": "D:\\F#\\Projects\\Project1\\Project1.fsproj",
+  "projectFilePath": "D:\\F#\\Lab_4\\Project1\\Project1.fsproj",
   "expectedPackageFiles": [
     "C:\\Users\\PC\\.nuget\\packages\\fsharp.core\\8.0.403\\fsharp.core.8.0.403.nupkg.sha512"
   ],

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\F#\\Projects\\Project2\\Project2.fsproj": {}
+    "D:\\F#\\Lab_4\\Project2\\Project2.fsproj": {}
   },
   "projects": {
-    "D:\\F#\\Projects\\Project2\\Project2.fsproj": {
+    "D:\\F#\\Lab_4\\Project2\\Project2.fsproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\F#\\Projects\\Project2\\Project2.fsproj",
+        "projectUniqueName": "D:\\F#\\Lab_4\\Project2\\Project2.fsproj",
         "projectName": "Project2",
-        "projectPath": "D:\\F#\\Projects\\Project2\\Project2.fsproj",
+        "projectPath": "D:\\F#\\Lab_4\\Project2\\Project2.fsproj",
         "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-        "outputPath": "D:\\F#\\Projects\\Project2\\obj\\",
+        "outputPath": "D:\\F#\\Lab_4\\Project2\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config"

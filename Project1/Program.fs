@@ -15,6 +15,16 @@ let rec treeMap func tree =
     | Node(value, left, right) ->
         Node(func value, treeMap func left, treeMap func right)
 
+/// Вставка значения в бинарное дерево поиска
+let rec insert value tree =
+    match tree with
+    | Empty -> Node(value, Empty, Empty)
+    | Node(root, left, right) ->
+        if value < root then
+            Node(root, insert value left, right)
+        else
+            Node(root, left, insert value right)
+
 /// Ввод целого положительного числа (глубины) с проверкой
 let rec readInt prompt =
     printf "%s" prompt
@@ -25,16 +35,15 @@ let rec readInt prompt =
         printfn "Ошибка: введите положительное целое число."
         readInt prompt
 
-/// Генерация случайного дерева заданной глубины (полное бинарное дерево)
+/// Генерация случайного бинарного дерева поиска с заданным количеством узлов
 let rnd = Random()
-let rec generateRandomTree depth =
-    if depth <= 0 then
-        Empty
-    else
-        let value = rnd.NextDouble() * 100.0
-        Node(value,
-             generateRandomTree (depth - 1),
-             generateRandomTree (depth - 1))
+let generateRandomTree count =
+    let rec loop n tree =
+        if n <= 0 then tree
+        else
+            let value = rnd.NextDouble() * 100.0
+            loop (n - 1) (insert value tree)
+    loop count Empty
 
 /// Вывод дерева с указанием глубины и направления.
 /// Параметры:
@@ -46,16 +55,15 @@ let rec printTreeDepth tree depth side =
     | Empty -> ()
     | Node(v, left, right) ->
         let indent = String.replicate depth "  "
-        /// выводит отступ, метку, глубину и значение узла с двумя знаками после запятой
         printfn "%s%s%d: %.2f" indent side depth v
         printTreeDepth left (depth + 1) "L"
         printTreeDepth right (depth + 1) "R"
 
 [<EntryPoint>]
 let main _ =
-    let depth = readInt "Введите глубину дерева (положительное целое число): "
+    let count = readInt "Введите количество узлов в дереве: "
 
-    let originalTree = generateRandomTree depth
+    let originalTree = generateRandomTree count
 
     printfn "\nИсходное дерево:"
     printTreeDepth originalTree 0 "Root"
